@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     :root{
         --maxwidth: 1280px;
         --white: #fff;
+        --black: #000;
         --darkGrey: #1c1c1c;
         --midGrey: #353535;
         --lightGrey: #eee;
@@ -25,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
         h1{
             font-size: 2rem;
             font-weight: 700;
-            color: var(--white);
+            color: var(--black);
         }
         h3{
             font-size: 1.1rem;
