@@ -2,12 +2,13 @@ import React from 'react';
 
 import { GlobalStyle } from './GlobalStyle';
 import Search from './pages/Search';
+import Dashboard from './pages/Dashboard';
 
 
 function App() {
   return (
     <div className="App">
-      <Search></Search>
+      <Dashboard></Dashboard>
     </div>
   );
 }

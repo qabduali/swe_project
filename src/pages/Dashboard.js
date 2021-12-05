@@ -1,13 +1,40 @@
 import React from "react";
+import Imp_button from "../components/buttons/Imp_button";
+import { GlobalStyle } from "../GlobalStyle";
+import Login from './Login'
+import Search from "./Search";
+
 
 function Dashboard() {
+  const [Clicked, setClicked] = React.useState(false)  
+  function onToggle(){
+    setClicked(true);  
+  }
     return (
-      <div className="Dashboard">
-          <h1>Hi</h1>
-          <GlobalStyle />
-      </div>
+      <div>
+      {Clicked === false && <div className="ui segment" style={{height: '100%', background: 'linear-gradient(to right,#407899 0%, #407899 50%, #a9dfff 50%, #a9dfff 100%)'}}>
+      <div className="ui two column very relaxed grid">
+        <div className="column">
+        <div style={{ textAlign: 'center' }}>
+        <Imp_button title = "Show List of Hotels" clr='white' onToggle={onToggle}></Imp_button>
+        <GlobalStyle />
+        </div>
+        </div>
+        <div className="column">
+        <Login></Login>
+        </div>
+        </div>
+    </div>}
+    {Clicked===true && <Search></Search>}
+
+
+
+    </div>
+
+
+      
     );
   }
   
-  export default App;
+  export default Dashboard;
   

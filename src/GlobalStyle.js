@@ -23,6 +23,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         margin: 0 auto;
         padding: 0;
+        height: 100%;
         h1{
             font-size: 2rem;
             font-weight: 700;
