@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Box, Button, Input, Text} from "@chakra-ui/react";
 import {
     Modal,
@@ -51,6 +51,17 @@ export const RoomsList = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+
+    const [filteredRooms, setFilteredRooms] = useState([]);
+    const [roomIdFilter, setRoomIdFilter] = useState("");
+    const [floorFilter, setFloorFilter] = useState("");
+    const [occupancyFilter, setOccupancyFilter] = useState("");
+
+    useEffect(() => {
+        const newFilteredRooms = testData.filter((room) => {
+
+        })
+    }, [roomIdFilter, floorFilter, occupancyFilter])
 
     return (
         <Box
@@ -119,6 +130,8 @@ export const RoomsList = () => {
                             width={"90%"}
                             color={"black"}
                             borderColor={"black"}
+                            value = {roomIdFilter}
+                            onChange = {(e) => setRoomIdFilter(e.target.value)}
                         />
                     </Box>
                     <Box
