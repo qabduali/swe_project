@@ -11,16 +11,21 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
+import {Navbar} from "./components/navbar/Navbar";
+import {RoomsList} from "./pages/rooms-list";
 
 function App() {
   return (
       <Router>
           <ChakraProvider>
             <div className="App">
-                {/*компонент HEADER сюда вставить*/}
+                <Navbar/>
                 <Switch>
                     <Route path={"/dashboard"}>
                         <Dashboard/>
+                    </Route>
+                    <Route path={"/booking"}>
+                        <RoomsList/>
                     </Route>
                     <Route path={"/"}>
                         <Redirect
