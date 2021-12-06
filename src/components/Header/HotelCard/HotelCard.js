@@ -10,20 +10,20 @@ const HotelCard = (props) => {
 
     
     return (
-        <div className='four wide column'>
+        <div onClick={props.onClick()} className='four wide column'>
             <div className="ui link blue fluid card">
-                <div class="content">
-                    <div class="header">{props.hotelName}</div>
-                    <div class="meta">
-                        <span class="category">Animals</span>
+                <div className="content">
+                    <div className="header">{props.hotelName}</div>
+                    <div className="meta">
+                        <span className="category">{}</span>
                     </div>
-                    <div class="description">
+                    <div className="description">
                         <p></p>
                     </div>
                 </div>
-                <div class="extra content">
-                    <div class="right floated author">
-                        ff
+                <div className="extra content">
+                    <div className="right floated author">
+                        {props.hotelAddress}
                     </div>
                 </div>
             </div>
