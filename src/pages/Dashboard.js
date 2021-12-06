@@ -1,7 +1,7 @@
 import React from "react";
 import Imp_button from "../components/buttons/Imp_button";
 import { GlobalStyle } from "../GlobalStyle";
-import Login from './Login'
+import Form from './Form'
 import Search from "./Search";
 
 
@@ -21,7 +21,7 @@ function Dashboard() {
         </div>
         </div>
         <div className="column">
-        <Login></Login>
+        <Form></Form>
         </div>
         </div>
     </div>}
