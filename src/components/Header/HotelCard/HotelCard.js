@@ -10,7 +10,7 @@ const HotelCard = (props) => {
 
     
     return (
-        <div className='column'>
+        <div className='four wide column'>
             <div className="ui link blue fluid card">
                 <div class="content">
                     <div class="header">{props.hotelName}</div>

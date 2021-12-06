@@ -3,6 +3,10 @@ import MainContent from '../components/Header/HotelCard/MainContent'
 
 
 const Search = () => {
+
+    
+
+
     const styles = {
         marginTop: '10px',
         width: '100%',
@@ -10,6 +14,7 @@ const Search = () => {
 
     return (
         <div className='ui container'>
+            <h1>Hotels</h1>
             <div class="ui icon input" style={styles}>
                 <i class="search icon"></i>
                     <input type="text" placeholder="Search..."/>
