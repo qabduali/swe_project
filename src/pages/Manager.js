@@ -2,6 +2,9 @@ import React, { useState, Fragment } from 'react';
 import EditRow from '../components/EditRow';
 import ReadOnlyRow from '../components/ReadOnlyRow';
 import data from '../mock-data.json';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import * as ReactBootStrap from "react-bootstrap";
+import {Table} from 'react-bootstrap';
 
 function Manager() {
     const [contacts, setContacts] = useState(data);
@@ -122,9 +125,10 @@ function Manager() {
     }
 
     return (
-        <div className="manager-container">
+        <div>
+            <div className="container">
             <form onSubmit={handleEditFormSubmit}>
-            <table>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>First Name</th>
@@ -153,7 +157,7 @@ function Manager() {
                         </Fragment>
                     ))}
                 </tbody>
-            </table>
+            </Table>
             </form>
             <h3>Add an employee</h3>
             <form onSubmit={handleAddFormSubmit}>
@@ -163,8 +167,9 @@ function Manager() {
                 <input type="number" name="hours" placeholder="Hours" required onChange={handleAddFormChange}></input>
                 <input type="text" name="position" placeholder="Position" required onChange={handleAddFormChange}></input>
                 <input type="number" name="salary" placeholder="Salary" required onChange={handleAddFormChange}></input>
-                <button type="submit">Add</button>
+                <button type="submit"> Add </button>
             </form>
+        </div>
         </div>
     )
 }
