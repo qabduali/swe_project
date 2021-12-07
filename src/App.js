@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import {Navbar} from "./components/navbar/Navbar";
 import {RoomsList} from "./pages/rooms-list";
+import Footer from './pages/MainPage/components/Footer';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                         />
                     </Route>
                 </Switch>
+                <Footer></Footer>
             </div>
           </ChakraProvider>
       </Router>
