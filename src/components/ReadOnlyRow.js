@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button} from 'react-bootstrap';
 
 const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
     return (
@@ -12,10 +13,10 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
             <td>{contact.position}</td>
             <td>{contact.salary}</td>
             <td> 
-                <button type="button" variant="primary" onClick = {(event)=>handleEditClick(event, contact)}>
+                <Button type="button" variant="outline-primary" onClick = {(event)=>handleEditClick(event, contact)} size="sm">
                       Edit  
-                </button>{'   '}
-                <button type="button" variant="danger" onClick = {()=>handleDeleteClick(contact.employee_id)}>Delete</button>
+                </Button>{'   '}
+                <Button type="button" variant="outline-danger" onClick = {()=>handleDeleteClick(contact.employee_id)} size="sm">Delete</Button>
             </td>
         </tr>
     )

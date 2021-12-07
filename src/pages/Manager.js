@@ -5,6 +5,7 @@ import data from '../mock-data.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ReactBootStrap from "react-bootstrap";
 import {Table} from 'react-bootstrap';
+import {Box} from "@chakra-ui/react";
 
 function Manager() {
     const [contacts, setContacts] = useState(data);
@@ -127,7 +128,9 @@ function Manager() {
     return (
         <div>
             <div className="container">
+            <div className="table">
             <form onSubmit={handleEditFormSubmit}>
+                
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -158,7 +161,9 @@ function Manager() {
                     ))}
                 </tbody>
             </Table>
+            
             </form>
+            </div>
             <h3>Add an employee</h3>
             <form onSubmit={handleAddFormSubmit}>
                 <input type="text" name="employee_name" placeholder="Employee Name" required onChange={handleAddFormChange}></input>

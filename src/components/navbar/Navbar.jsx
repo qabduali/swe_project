@@ -17,7 +17,7 @@ export const Navbar = () => {
                 alignItems={"center"}
                 backgroundColor={"#1f2333"}
             >
-                <Image src = {"https://s2.qwant.com/thumbr/0x380/4/f/747c10a6bdeb1ca13540152e81aabb4aad4cc68bf85be8fcb033fe8ee1c23f/q_letter_logo.png?u=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F2068059%2Fscreenshots%2F4235024%2Fq_letter_logo.png&q=0&b=1&p=0&a=0"} radius="full" height='95px' width='122px'/>
+                <Image src = {"https://s2.qwant.com/thumbr/0x380/4/f/747c10a6bdeb1ca13540152e81aabb4aad4cc68bf85be8fcb033fe8ee1c23f/q_letter_logo.png?u=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F2068059%2Fscreenshots%2F4235024%2Fq_letter_logo.png&q=0&b=1&p=0&a=0"} radius="full" height='60px' width='80px'/>
                 <Box marginX={"auto"} display={"flex"}>
                     <Text
                         color={"#59c2b8"}
@@ -43,7 +43,7 @@ export const Navbar = () => {
                         fontSize={"16px"}
                         fontWeight={500}
                         lineHeight={"65px"}
-                        height={"65px"}
+                        height={"63px"}
                         borderBottom={location.pathname.includes("/booking") ? "2.5px solid #2F2F2F" : ""}
                         onClick={() => {
                             history.push('/booking');
@@ -61,12 +61,12 @@ export const Navbar = () => {
                         lineHeight={"65px"}
                         height={"65px"}
                         fontWeight={500}
-                        borderBottom={location.pathname.includes("/history") ? "2.5px solid #2F2F2F" : ""}
+                        borderBottom={location.pathname.includes("/employees") ? "2.5px solid #2F2F2F" : ""}
                         onClick={() => {
-                            history.push('/history');
+                            history.push('/employees');
                         }}
                     >
-                        History
+                        Employees
                     </Text>
                     <Text
                         color={"#59c2b8"}
@@ -78,12 +78,12 @@ export const Navbar = () => {
                         lineHeight={"65px"}
                         height={"65px"}
                         fontWeight={500}
-                        borderBottom={location.pathname.includes("/settings") ? "2.5px solid #2F2F2F" : ""}
+                        borderBottom={location.pathname.includes("/profile") ? "2.5px solid #2F2F2F" : ""}
                         onClick={() => {
-                            history.push('/settings');
+                            history.push('/profile');
                         }}
                     >
-                        Settings
+                        Profile
                     </Text>
                 </Box>
                 <Box marginLeft={"auto"} marginRight={"20px"}>
@@ -106,6 +106,7 @@ export const Navbar = () => {
                                     _hover={{ background: "#080e2c", color:"#59c2b8" }}
                                     _active={{ background: "#080e2c "}}
                                     onClick={() => {
+                                        history.push("/login")
                                     }}
                                 >
                                     Log in
@@ -125,6 +126,7 @@ export const Navbar = () => {
                                     _hover={{ background: "#080e2c", color:"#59c2b8" }}
                                     _active={{ background: "#080e2c"}}
                                     onClick={() => {
+                                        history.push("/registration")
                                     }}
                                 >
                                     Register
@@ -142,6 +144,7 @@ export const Navbar = () => {
                                 _hover={{ background: "#080e2c" }}
                                 _active={{ background: "#080e2c" }}
                                 onClick={() => {
+
                                 }}
                             >
                                 Log out
