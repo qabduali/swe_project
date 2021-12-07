@@ -12,7 +12,7 @@ import {
     Redirect
 } from "react-router-dom";
 import {Navbar} from "./components/navbar/Navbar";
-import {RoomsList} from "./pages/rooms-list";
+//import {RoomsList} from "./pages/rooms-list";
 import {UserProfile} from "./pages/user-profile";
 import {Registration} from "./pages/registration";
 import {LoginPage} from "./pages/login.jsx";
@@ -30,7 +30,7 @@ function App() {
                         <Dashboard/>
                     </Route>
                     <Route path={"/booking"}>
-                        <RoomsList/>
+                        <Search/>
                     </Route>
                     <Route path={"/profile"}>
                         <UserProfile/>

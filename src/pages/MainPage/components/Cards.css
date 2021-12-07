@@ -5,6 +5,10 @@
 
 h1 {
   text-align: center;
+  
+}
+.bigger{
+  font-size: 36px;
 }
 
 .cards__container {
