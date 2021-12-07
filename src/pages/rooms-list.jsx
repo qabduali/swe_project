@@ -60,9 +60,6 @@ const testData = [
 export const RoomsList = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-
-
-
     const [filteredRooms, setFilteredRooms] = useState(testData);
     const [roomIdFilter, setRoomIdFilter] = useState("");
     const [floorFilter, setFloorFilter] = useState("");
