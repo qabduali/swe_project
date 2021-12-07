@@ -12,13 +12,12 @@ import {
     Redirect
 } from "react-router-dom";
 import {Navbar} from "./components/navbar/Navbar";
-//import {RoomsList} from "./pages/rooms-list";
+import {RoomsList} from "./pages/rooms-list";
 import {UserProfile} from "./pages/user-profile";
 import {Registration} from "./pages/registration";
 import {LoginPage} from "./pages/login.jsx";
 import {ManagerPage} from "./pages/manager-page";
 import Footer from './pages/MainPage/components/Footer';
-
 function App() {
   return (
       <Router>
@@ -28,6 +27,9 @@ function App() {
                 <Switch>
                     <Route path={"/dashboard"}>
                         <Dashboard/>
+                    </Route>
+                    <Route path={'/booking/:id'}>
+                        <RoomsList />
                     </Route>
                     <Route path={"/booking"}>
                         <Search/>
@@ -51,6 +53,7 @@ function App() {
                             }}
                         />
                     </Route>
+                    
                 </Switch>
                 <Footer></Footer>
             </div>

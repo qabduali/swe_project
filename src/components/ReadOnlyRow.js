@@ -15,7 +15,7 @@ const ReadOnlyRow = ({ contact, handleEditClick, handleDeleteClick }) => {
             <td> 
                 <Button type="button" variant="outline-primary" onClick = {(event)=>handleEditClick(event, contact)} size="sm">
                       Edit  
-                </Button>{'   '}
+                </Button>{'    '}
                 <Button type="button" variant="outline-danger" onClick = {()=>handleDeleteClick(contact.employee_id)} size="sm">Delete</Button>
             </td>
         </tr>

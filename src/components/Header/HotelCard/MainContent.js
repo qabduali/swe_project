@@ -1,12 +1,14 @@
 import React from 'react'
 import HotelCard from './HotelCard'
 import '../../../css/MainContent.css'
+import { useHistory } from 'react-router'
 
 const MainContent = (props) => {
+    const history = useHistory()
+
     const onClick = (cache => i => {
         if( !cache[i] ) cache[i] = e => {
-            console.log(i)
-            //routing
+            history.push(`/booking/${i}`);
         }
         return cache[i];
     }

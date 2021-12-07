@@ -12,7 +12,7 @@ import '../css/Table.css';
 export const ManagerPage = () => {
     const [contacts, setContacts] = useState(data);
     const [editContactId, setEditContactId] = useState(null);
-
+    const [addEmployee,setAddemployee] = useState(false);
     const [addFormData, setAddFormData] = useState({
         /* "employee_id": "",*/
         "employee_name": "",
@@ -31,6 +31,8 @@ export const ManagerPage = () => {
         "position": "",
         "salary": ""
     })
+
+
 
     const handleAddFormChange = (event) =>{
         event.preventDefault();
@@ -128,6 +130,8 @@ export const ManagerPage = () => {
     }
 
     return (
+        <div>
+        {addEmployee===false &&
         <Box
             display={"flex"}
             flexDirection={"column"}
@@ -137,8 +141,9 @@ export const ManagerPage = () => {
             <Box
                 width={"100%"}
             >
+                <div className="table">
                 <form onSubmit={handleEditFormSubmit}>
-                    <div className="table">
+                    
                     <Table striped hover responsive="sm">
                         <thead>
                         <tr>
@@ -169,10 +174,21 @@ export const ManagerPage = () => {
                         ))}
                         </tbody>
                     </Table>
-                    </div>
+                    
                 </form>
+                </div>
 
-                <h3 style={{marginLeft:"auto", marginRight:"auto", marginBottom: "16px", textAlign: "center"}}>Add an employee</h3>
+                
+            </Box>
+            <Button
+                        marginTop={"15px"}
+                        type="submit"
+                        onClick={()=>setAddemployee(!addEmployee)}
+                    >
+                        Add
+                    </Button>
+        </Box>}
+        {addEmployee===true && <div><h1 style={{fontSize:'48px', marginBottom: "20px", textAlign: "center"}}>Add an employee</h1>
                 <form onSubmit={handleAddFormSubmit} style={{
                     display: "flex",
                     flexDirection:"column",
@@ -276,11 +292,11 @@ export const ManagerPage = () => {
                     <Button
                         marginTop={"15px"}
                         type="submit"
+                        onClick={()=>setAddemployee(!addEmployee)}
                     >
                         Add
                     </Button>
-                </form>
-            </Box>
-        </Box>
+                </form></div>}
+        </div>
     )
 }
