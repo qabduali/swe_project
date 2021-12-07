@@ -11,6 +11,8 @@ import {
     useDisclosure
 } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
 
 const testData = [
     {
@@ -60,6 +62,7 @@ export const RoomsList = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
 
+
     const [filteredRooms, setFilteredRooms] = useState(testData);
     const [roomIdFilter, setRoomIdFilter] = useState("");
     const [floorFilter, setFloorFilter] = useState("");
@@ -67,6 +70,8 @@ export const RoomsList = () => {
     const [occupancyFilter, setOccupancyFilter] = useState('');
     const [roomTypeIdFilter, setRoomTypeIdFilter]= useState('');
     const [statusFilter, setStatusFilter]= useState('');
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
 
     useEffect(() => {
         let newFilteredRooms = testData.filter((room) => {
@@ -132,10 +137,9 @@ export const RoomsList = () => {
         })
         
         setFilteredRooms(newFilteredRooms)
-        console.log(occupancyFilter)
     }, [roomIdFilter, floorFilter, roomFilter,occupancyFilter,roomTypeIdFilter,statusFilter])
 
-    return (
+  return (
         <Box
             backgroundColor={"#dfe6e9"}
             height={"calc(100vh - 60px)"}
@@ -154,11 +158,28 @@ export const RoomsList = () => {
                             marginBottom={"10px"}
                         >
                             <Text>From</Text>
-                            <Input placeholder="select date"/>
+                            <Box
+                                width={"100%"}
+                                height={"40px"}
+                            >
+                                <DatePicker
+                                    selected={startDate}
+                                    onChange={(date) => {setStartDate(date)}}
+                                    placeholderText="Select date"
+                                    customInput={<CustomDateInput />}
+                                />
+                            </Box>
                         </Box>
                         <Box>
                             <Text>To</Text>
-                            <Input placeholder="select date"/>
+                            <Box>
+                                <DatePicker
+                                    selected={endDate}
+                                    onChange={(date) => setEndDate(date)}
+                                    placeholderText="Select date"
+                                    customInput={<CustomDateInput />}
+                                />
+                            </Box>
                         </Box>
                     </ModalBody>
 
@@ -408,6 +429,23 @@ export const RoomsList = () => {
                     })
                 }
             </Box>
+        </Box>
+    )
+}
+
+
+
+const CustomDateInput = ({value, onClick}) => {
+    return (
+        <Box
+            onClick={onClick}
+            width={"100%"}
+            height={"100%"}
+            border={"1px solid gray"}
+            borderRadius={"8px"}
+            padding={"7px"}
+        >
+            {value}
         </Box>
     )
 }
