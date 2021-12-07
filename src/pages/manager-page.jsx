@@ -1,15 +1,16 @@
-import React, { useState, Fragment } from 'react';
-import EditRow from '../components/EditRow';
-import ReadOnlyRow from '../components/ReadOnlyRow';
-import data from '../mock-data.json';
-import {Box} from "@chakra-ui/react";
+import React, {Fragment, useState} from "react";
+import data from "../mock-data.json";
+import {Box, Button, Input, Text} from "@chakra-ui/react";
+import EditRow from "../components/EditRow";
+import ReadOnlyRow from "../components/ReadOnlyRow";
 
-function Manager() {
+
+export const ManagerPage = () => {
     const [contacts, setContacts] = useState(data);
     const [editContactId, setEditContactId] = useState(null);
 
     const [addFormData, setAddFormData] = useState({
-       /* "employee_id": "",*/
+        /* "employee_id": "",*/
         "employee_name": "",
         "employee_surname": "",
         "hotel_id": "",
@@ -54,7 +55,7 @@ function Manager() {
 
     const handleAddFormSubmit = (event) => {
         event.preventDefault();
-        
+
         const newContact = {
             employee_name: addFormData.employee_name,
             employee_surname: addFormData.employee_surname,
@@ -129,7 +130,9 @@ function Manager() {
             width={"100%"}
             height={"calc(100vh - 70px)"}
         >
-            <div className="manager-container">
+            <Box
+                width={"100%"}
+            >
                 <form onSubmit={handleEditFormSubmit}>
                     <table>
                         <thead>
@@ -162,19 +165,116 @@ function Manager() {
                         </tbody>
                     </table>
                 </form>
-                <h3>Add an employee</h3>
-                <form onSubmit={handleAddFormSubmit}>
-                    <input type="text" name="employee_name" placeholder="Employee Name" required onChange={handleAddFormChange}></input>
-                    <input type="text" name="employee_surname" placeholder="Employee Surname" required onChange={handleAddFormChange}></input>
-                    <input type="number" name="hotel_id" placeholder="Hotel ID" required onChange={handleAddFormChange}></input>
-                    <input type="number" name="hours" placeholder="Hours" required onChange={handleAddFormChange}></input>
-                    <input type="text" name="position" placeholder="Position" required onChange={handleAddFormChange}></input>
-                    <input type="number" name="salary" placeholder="Salary" required onChange={handleAddFormChange}></input>
-                    <button type="submit">Add</button>
+
+                <h3 style={{marginLeft:"auto", marginRight:"auto", marginBottom: "16px", textAlign: "center"}}>Add an employee</h3>
+                <form onSubmit={handleAddFormSubmit} style={{
+                    display: "flex",
+                    flexDirection:"column",
+                    padding: "20px",
+                    width: "500px",
+                    marginLeft: 'auto',
+                    marginRight: "auto",
+                    border: "1px solid black",
+                    borderRadius: "8px"
+                }}>
+
+                    <Box>
+                        <Text>
+                            Employee name
+                        </Text>
+                        <Input
+                            width={"100%"}
+                            height={"32px"}
+                            marginBottom={"10px"}
+                            name="employee_name"
+                            placeholder="Employee Name"
+                            required
+                            value={addFormData.employee_name}
+                            onChange={handleAddFormChange}
+                        />
+                    </Box>
+                    <Box>
+                        <Text>
+                            Surname
+                        </Text>
+                        <Input
+                            width={"100%"}
+                            height={"32px"}
+                            marginBottom={"10px"}
+                            name="employee_surname"
+                            placeholder="surname"
+                            required
+                            value={addFormData.employee_surname}
+                            onChange={handleAddFormChange}
+                        />
+                    </Box>
+                    <Box>
+                        <Text>
+                            Hotel id
+                        </Text>
+                        <Input
+                            width={"100%"}
+                            height={"32px"}
+                            marginBottom={"10px"}
+                            name="hotel_id"
+                            placeholder="Hotel ID"
+                            required
+                            value={addFormData.hotel_id}
+                            onChange={handleAddFormChange}
+                        />
+                    </Box>
+                    <Box>
+                        <Text>
+                            Hours
+                        </Text>
+                        <Input
+                            width={"100%"}
+                            height={"32px"}
+                            marginBottom={"10px"}
+                            name="hours"
+                            placeholder="Hours"
+                            required
+                            value={addFormData.hours}
+                            onChange={handleAddFormChange}
+                        />
+                    </Box>
+                    <Box>
+                        <Text>
+                            Position
+                        </Text>
+                        <Input
+                            width={"100%"}
+                            height={"32px"}
+                            marginBottom={"10px"}
+                            name="position"
+                            placeholder="Position"
+                            required
+                            value={addFormData.position}
+                            onChange={handleAddFormChange}
+                        />
+                    </Box>
+                    <Box>
+                        <Text>
+                            Salary
+                        </Text>
+                        <Input
+                            width={"100%"}
+                            height={"32px"}
+                            name="salary"
+                            placeholder="Salary"
+                            required
+                            value={addFormData.salary}
+                            onChange={handleAddFormChange}
+                        />
+                    </Box>
+                    <Button
+                        marginTop={"15px"}
+                        type="submit"
+                    >
+                        Add
+                    </Button>
                 </form>
-            </div>
+            </Box>
         </Box>
     )
 }
-
-export default Manager

@@ -57,12 +57,12 @@ export const Navbar = () => {
                         lineHeight={"65px"}
                         height={"65px"}
                         fontWeight={500}
-                        borderBottom={location.pathname.includes("/history") ? "2.5px solid #2F2F2F" : ""}
+                        borderBottom={location.pathname.includes("/employees") ? "2.5px solid #2F2F2F" : ""}
                         onClick={() => {
-                            history.push('/history');
+                            history.push('/employees');
                         }}
                     >
-                        history
+                        employees
                     </Text>
                     <Text
                         paddingLeft={"7px"}
@@ -73,12 +73,12 @@ export const Navbar = () => {
                         lineHeight={"65px"}
                         height={"65px"}
                         fontWeight={500}
-                        borderBottom={location.pathname.includes("/settings") ? "2.5px solid #2F2F2F" : ""}
+                        borderBottom={location.pathname.includes("/profile") ? "2.5px solid #2F2F2F" : ""}
                         onClick={() => {
-                            history.push('/settings');
+                            history.push('/profile');
                         }}
                     >
-                        settings
+                        profile
                     </Text>
                 </Box>
                 <Box marginLeft={"auto"} marginRight={"20px"}>
@@ -101,6 +101,7 @@ export const Navbar = () => {
                                     _hover={{ background: "#080e2c" }}
                                     _active={{ background: "#080e2c "}}
                                     onClick={() => {
+                                        history.push("/login")
                                     }}
                                 >
                                     Log in
@@ -120,6 +121,7 @@ export const Navbar = () => {
                                     _hover={{ background: "#080e2c" }}
                                     _active={{ background: "#080e2c "}}
                                     onClick={() => {
+                                        history.push("/registration")
                                     }}
                                 >
                                     Registration
@@ -137,6 +139,7 @@ export const Navbar = () => {
                                 _hover={{ background: "#080e2c" }}
                                 _active={{ background: "#080e2c" }}
                                 onClick={() => {
+
                                 }}
                             >
                                 Log out
