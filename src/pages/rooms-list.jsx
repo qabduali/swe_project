@@ -10,7 +10,7 @@ import {
     ModalCloseButton,
     useDisclosure
 } from '@chakra-ui/react'
-import { Select } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react';
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 

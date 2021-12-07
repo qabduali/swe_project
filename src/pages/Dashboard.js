@@ -5,6 +5,8 @@ import Form from './Form'
 import Cards from "./MainPage/components/Cards";
 import HeroSection from "./MainPage/components/HeroSection";
 import Search from "./Search";
+import Login from "./Login";
+import Manager from './Manager';
 
 
 function Dashboard() {
