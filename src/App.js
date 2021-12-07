@@ -17,6 +17,7 @@ import {UserProfile} from "./pages/user-profile";
 import {Registration} from "./pages/registration";
 import {LoginPage} from "./pages/login.jsx";
 import {ManagerPage} from "./pages/manager-page";
+import Footer from './pages/MainPage/components/Footer';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
                         />
                     </Route>
                 </Switch>
+                <Footer></Footer>
             </div>
           </ChakraProvider>
       </Router>
