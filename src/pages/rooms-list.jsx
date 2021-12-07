@@ -38,12 +38,20 @@ const testData = [
         occupancy: false
     },
     {
-        room_id: 43,
+        room_id: 44,
         room_type_id: 344,
         room_number: "3424",
         floor: 33,
         cleaned: true,
         occupancy: false
+    },
+    {
+        room_id: 454,
+        room_type_id: 3444,
+        room_number: "34",
+        floor: 33,
+        cleaned: false,
+        occupancy: true,
     }
 ]
 
@@ -52,16 +60,80 @@ export const RoomsList = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
 
-    const [filteredRooms, setFilteredRooms] = useState([]);
+    const [filteredRooms, setFilteredRooms] = useState(testData);
     const [roomIdFilter, setRoomIdFilter] = useState("");
     const [floorFilter, setFloorFilter] = useState("");
-    const [occupancyFilter, setOccupancyFilter] = useState("");
+    const [roomFilter, setRoomFilter] = useState("");
+    const [occupancyFilter, setOccupancyFilter] = useState('');
+    const [roomTypeIdFilter, setRoomTypeIdFilter]= useState('');
+    const [statusFilter, setStatusFilter]= useState('');
 
     useEffect(() => {
-        const newFilteredRooms = testData.filter((room) => {
-
+        let newFilteredRooms = testData.filter((room) => {
+            if (roomIdFilter !== "" ){
+                if (room.room_id.toString()===roomIdFilter){
+                    return true;
+                }
+            }else{
+                return true;
+            }
+            
         })
-    }, [roomIdFilter, floorFilter, occupancyFilter])
+        newFilteredRooms = newFilteredRooms.filter((room) => {
+            if (floorFilter !== ""){
+                if (room.floor.toString()===floorFilter){
+                    return true;
+                }
+            }else{
+                return true;
+            }
+            
+        })
+
+        newFilteredRooms = newFilteredRooms.filter((room) => {
+            if (roomFilter !== ""){
+                if (room.room_number.toString()===roomFilter){
+                    return true;
+                }
+            }else{
+                return true;
+            }
+            
+        })
+
+        newFilteredRooms = newFilteredRooms.filter((room) => {
+            if (occupancyFilter !== ''){
+                if (occupancyFilter==='FREE'){
+                    return !room.occupancy;
+                }
+                if (occupancyFilter==='OCCUPIED'){
+                    return room.occupancy;
+                }
+                return true
+            }else{
+                return true;
+            }
+            
+        })
+
+        newFilteredRooms = newFilteredRooms.filter((room) => {
+            if (statusFilter !== ''){
+                if (statusFilter === 'CLEANED'){
+                    return room.cleaned;
+                }
+                if (statusFilter === 'NOT_CLEANED'){
+                    return !room.cleaned;
+                }
+                return true
+            }else{
+                return true;
+            }
+            
+        })
+        
+        setFilteredRooms(newFilteredRooms)
+        console.log(occupancyFilter)
+    }, [roomIdFilter, floorFilter, roomFilter,occupancyFilter,roomTypeIdFilter,statusFilter])
 
     return (
         <Box
@@ -126,7 +198,7 @@ export const RoomsList = () => {
                         justifyContent={"center"}
                     >
                         <Input
-                            placeholder={"filter by id"}
+                            placeholder={"Room Id"}
                             width={"90%"}
                             color={"black"}
                             borderColor={"black"}
@@ -140,10 +212,12 @@ export const RoomsList = () => {
                         justifyContent={"center"}
                     >
                         <Input
-                            placeholder={"filter by floor"}
+                            placeholder={"Floor"}
                             width={"90%"}
                             color={"black"}
                             borderColor={"black"}
+                            value = {floorFilter}
+                            onChange = {(e) => setFloorFilter(e.target.value)}
                         />
                     </Box>
                     <Box
@@ -152,10 +226,12 @@ export const RoomsList = () => {
                         justifyContent={"center"}
                     >
                         <Input
-                            placeholder={"filter by room #"}
+                            placeholder={"Room #"}
                             width={"90%"}
                             color={"black"}
                             borderColor={"black"}
+                            value = {roomFilter}
+                            onChange = {(e) => setRoomFilter(e.target.value)}
                         />
                     </Box>
                     <Box
@@ -164,10 +240,12 @@ export const RoomsList = () => {
                         justifyContent={"center"}
                     >
                         <Input
-                            placeholder={"filter b"}
+                            placeholder={"Room Type"}
                             width={"90%"}
                             color={"black"}
                             borderColor={"black"}
+                            value = {roomTypeIdFilter}
+                            onChange = {(e) => setRoomTypeIdFilter(e.target.value)}
                         />
                     </Box>
                     <Box
@@ -176,12 +254,14 @@ export const RoomsList = () => {
                         justifyContent={"center"}
                     >
                         <Select
-                            placeholder='Filter by status'
                             width={"90%"}
+                            onChange = {(e) => setStatusFilter(e.target.value)}
                         >
-                            <option value='ALL'>all</option>
-                            <option value='CLEANED'>cleaned</option>
-                            <option value='NOT_CLEANED'>not cleaned</option>
+                            <option value="" disabled selected hidden>Status</option>
+                            <option value='ALL'>All</option>
+                            <option value='CLEANED'>Cleaned</option>
+                            <option value='NOT_CLEANED'>Not Cleaned</option>
+
                         </Select>
                     </Box>
                     <Box
@@ -190,12 +270,13 @@ export const RoomsList = () => {
                         justifyContent={"center"}
                     >
                         <Select
-                            placeholder='Filter by occupancy'
                             width={"90%"}
+                            onChange = {(e) => setOccupancyFilter(e.target.value)}
                         >
-                            <option value='ALL'>all</option>
-                            <option value='OCCUPIED'>occupied</option>
-                            <option value='FREE'>free</option>
+                            <option value="" disabled selected hidden>Occupancy</option>
+                            <option value='ALL'>All</option>
+                            <option value='OCCUPIED'>Occupied</option>
+                            <option value='FREE'>Free</option>
                         </Select>
                     </Box>
                 </Box>
@@ -262,9 +343,10 @@ export const RoomsList = () => {
                     </Box>
                 </Box>
                 {
-                    testData.map((room) => {
+                    filteredRooms.map((room) => {
                         return (
                             <Box
+                                key={room.room_id}
                                 display={"flex"}
                                 flexDirection={"row"}
                                 borderRadius={"7px"}
